@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "practice for  jwt-authentication",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "jwt"
   ],
@@ -19,6 +16,12 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {
-    "eslint": "^5.2.0"
+    "eslint": "^5.2.0",
+    "nodemon": "^1.18.3"
+  },
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
