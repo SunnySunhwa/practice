@@ -131,7 +131,7 @@ exports.login = (req, res) => {
 /*
     When user send jwt value in header as x-access-token or url parameter,
     Server check and show the account status with that token
-    --> that code move to in middlewares/auth.js
+    --> that code move to in middlewares/auth.js (token validation)
     --> So,  in this code,
     no need to consider the case of failure for checking token
    
