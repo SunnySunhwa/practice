@@ -39,7 +39,7 @@ exports.assignAdmin = (req, res) => {
         user => user.assignAdmin
     ).then(
         res.json({
-            success: true
+            message: 'successful assign as adminisrator'
         })
     )
 }

@@ -74,7 +74,6 @@ exports.login = (req, res) => {
   const secret = req.app.get('jwt-secret')
 
   // check the user info & generate the jwt
-      // check the user info & generate the jwt
   const check = (user) => {
       if(!user) {
           // user does not exist
@@ -110,7 +109,7 @@ exports.login = (req, res) => {
   const respond = (token) => {
       res.json({
           message: 'logged in successfully',
-          token
+          token,
       })
   }
 

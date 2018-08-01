@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const crypto = require('crypto')
+const config = require('../config')
 const Schema = mongoose.Schema
 
 const User = new Schema({
@@ -7,11 +9,33 @@ const User = new Schema({
     admin: { type: Boolean, default: false }
 })
 
+/* Before hashing
 // create new User document
 User.statics.create = function(username, password) {
     const user = new this({
         username,
         password
+    })
+
+    // return the Promise
+    return user.save()
+}
+
+// verify the password of the User documment
+User.methods.verify = function(password) {
+    return this.password === password
+}
+*/
+
+// create new User document
+User.statics.create = function(username, password) {
+    const encrypted = crypto.createHmac('sha1', config.secret)
+                      .update(password)
+                      .digest('base64')
+
+    const user = new this({
+        username,
+        password: encrypted
     })
 
     // return the Promise
@@ -25,11 +49,15 @@ User.statics.findOneByUsername = function(username) {
     }).exec()
 }
 
-
 // verify the password of the User documment
 User.methods.verify = function(password) {
-    return this.password === password
+    const encrypted = crypto.createHmac('sha1', config.secret)
+                      .update(password)
+                      .digest('base64')
+
+    return this.password === encrypted
 }
+
 
 User.methods.assignAdmin = function() {
     this.admin = true
