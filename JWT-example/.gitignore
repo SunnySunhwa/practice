@@ -3,8 +3,6 @@
 # dependencies
 /node_modules
 
-# IDE - VSCode
-/JWT-example/.vscode/*
-
-
-/JWT-example/config.js
+# IDE
+.vscode/*
+config.js
